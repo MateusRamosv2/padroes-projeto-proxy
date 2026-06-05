@@ -32,4 +32,16 @@ class RelatorioFinanceiroProxyTest {
         assertEquals(Arrays.asList(1500.50, 450.00), proxy.obterFaturamentoDetalhado(gerente));
     }
 
+    @Test
+    void deveLancarExcecaoAoTentarVerFaturamentoSendoFuncionarioComum() {
+        Usuario garcom = new Usuario("Tony Stark (Garçom)", false);
+        RelatorioFinanceiroProxy proxy = new RelatorioFinanceiroProxy("2026-06-04");
+
+        Exception excecao = assertThrows(IllegalArgumentException.class, () -> {
+            proxy.obterFaturamentoDetalhado(garcom);
+        });
+
+        assertEquals("Acesso Negado: Apenas gerentes podem visualizar o faturamento.", excecao.getMessage());
+    }
+
 }
