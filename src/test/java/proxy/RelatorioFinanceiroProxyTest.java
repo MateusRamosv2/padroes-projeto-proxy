@@ -20,7 +20,7 @@ class RelatorioFinanceiroProxyTest {
         RelatorioFinanceiroProxy proxy = new RelatorioFinanceiroProxy("2026-06-04");
 
 
-        assertEquals(Arrays.asList("Data: 2026-06-04", "Status: Caixa verificado"), proxy.obterResumoDiario());
+        assertEquals(Arrays.asList("Data: 2026-06-04", "Status: CAIXA BATIDO"), proxy.obterResumoDiario());
     }
 
 
